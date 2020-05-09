@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'constants.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,6 +11,8 @@ class _HomePageState extends State<HomePage> {
 
   Size get size => MediaQuery.of(context).size;
 
+  bool get showDrawer => size.width <= 760;
+
   @override
   Widget build(BuildContext context) {
 
@@ -17,6 +20,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter Web - ${size.width}/${size.height}'),
+        automaticallyImplyLeading: showDrawer,
       ),
       body: _body(),
       drawer: Drawer(
@@ -27,7 +31,9 @@ class _HomePageState extends State<HomePage> {
 
   _body() {
 
-    return Row(
+    return showDrawer
+      ? _right() :
+      Row(
       children: [
         _menu(),
         _right(),
@@ -37,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
   _menu() {
     return Container(
-      width: size.width * 0.2,
+      width: menuWidth,
       color: Colors.blue[100],
       child: ListView(
         children: [
@@ -58,8 +64,8 @@ class _HomePageState extends State<HomePage> {
 
   _right() {
     return Container(
-      width: size.width * 0.8,
-      color: Colors.grey[100],
+      width: showDrawer ? size.width : size.width - menuWidth,
+      color: Colors.grey,
     );
   }
 }
