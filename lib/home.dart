@@ -1,3 +1,6 @@
+import 'package:carros_flutter_web/web/header.dart';
+import 'package:carros_flutter_web/web/menu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
@@ -11,60 +14,59 @@ class _HomePageState extends State<HomePage> {
 
   Size get size => MediaQuery.of(context).size;
 
-  bool get showDrawer => size.width <= 760;
+  bool get showMenu => size.width > 500;
+
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter Web - ${size.width}/${size.height}'),
-        automaticallyImplyLeading: showDrawer,
-      ),
-      body: _body(),
-      drawer: Drawer(
-        child: _menu(),
+      body: Column(
+        children: [
+          _header(),
+          _body(),
+        ],
       ),
     );
   }
 
-  _body() {
-
-    return showDrawer
-      ? _right() :
-      Row(
-      children: [
-        _menu(),
-        _right(),
-      ],
-    );
+   _header() {
+    return Container(
+          padding: EdgeInsets.all(16.0),
+          width: size.width,
+          height: headerHeight,
+          color: Colors.blue,
+          child: Header(),
+        );
   }
+
+   _body() {
+    return Container(
+          width: size.width,
+          height: size.height - headerHeight,
+          child: showMenu ?
+          Row(
+            children: [
+              _menu(),
+              _right(),
+            ],
+          )
+       :  _right(),
+        );
+  }
+
+
 
   _menu() {
     return Container(
       width: menuWidth,
       color: Colors.blue[100],
-      child: ListView(
-        children: [
-          ListTile(
-            leading: Icon(Icons.star),
-            title: Text("Item1"),
-          ),ListTile(
-            leading: Icon(Icons.star),
-            title: Text("Item2"),
-          ),ListTile(
-            leading: Icon(Icons.star),
-            title: Text("Item3"),
-          )
-        ],
-      )
+      child: Menu(),
     );
   }
 
   _right() {
     return Container(
-      width: showDrawer ? size.width : size.width - menuWidth,
+      width:  showMenu ? size.width - menuWidth : size.width,
       color: Colors.grey,
     );
   }
