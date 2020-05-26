@@ -12,16 +12,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: TextTheme(
-          body1: TextStyle(
-            fontSize: 20
-          )
-        ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: _theme(),
       home: HomePage(),
+    );
+  }
+
+  ThemeData _theme() {
+    return ThemeData(
+      primarySwatch: Colors.blue,
+      scaffoldBackgroundColor: Colors.white,
+      splashColor: Colors.blue,
+      hoverColor: Colors.blue[100],
+      textTheme: TextTheme(
+        body1: TextStyle(
+          fontSize: 20
+        )
+      ),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
     );
   }
 }

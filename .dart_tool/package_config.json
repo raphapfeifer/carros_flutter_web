@@ -56,6 +56,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///home/raphael/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-8.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///home/raphael/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.6",
       "packageUri": "lib/",
@@ -70,6 +76,12 @@
     {
       "name": "path",
       "rootUri": "file:///home/raphael/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///home/raphael/flutter/.pub-cache/hosted/pub.dartlang.org/provider-3.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
@@ -134,7 +146,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-05-05T00:31:54.393670Z",
+  "generated": "2020-05-26T04:24:08.979437Z",
   "generator": "pub",
   "generatorVersion": "2.9.0-5.0.dev.flutter-c3ce873556"
 }
