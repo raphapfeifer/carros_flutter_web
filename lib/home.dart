@@ -2,7 +2,9 @@ import 'package:carros_flutter_web/web/header.dart';
 import 'package:carros_flutter_web/web/menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'app_model.dart';
 import 'constants.dart';
 
 class HomePage extends StatefulWidget {
@@ -65,8 +67,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   _right() {
+
+    AppModel app = Provider.of<AppModel>(context, listen: true);
+
     return Container(
       width:  showMenu ? size.width - menuWidth : size.width,
+      child: app.page,
     );
   }
 }
