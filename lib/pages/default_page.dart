@@ -25,9 +25,13 @@ class _DefaultPageState extends State<DefaultPage> {
         ),
         itemBuilder: (context, index) {
           return Card(
-            child: Center(
-              child: DebugWidgetSize(),
-            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network("http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png"),
+                Text("Renault Megane RS Trophy")
+              ],
+            )
           );
         });
   }
