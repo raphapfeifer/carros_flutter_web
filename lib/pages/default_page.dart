@@ -1,4 +1,5 @@
 import 'package:carros_flutter_web/web/debug_widget_size.dart';
+import 'package:carros_flutter_web/web/web_utils.dart';
 import 'package:flutter/material.dart';
 
 class DefaultPage extends StatefulWidget {
@@ -18,21 +19,29 @@ class _DefaultPageState extends State<DefaultPage> {
     return GridView.builder(
         itemCount: 3,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
-            childAspectRatio: 1.5
-        ),
+            crossAxisCount: 2,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+            childAspectRatio: 1.5),
         itemBuilder: (context, index) {
-          return Card(
-            child: Column(
+          return LayoutBuilder(builder: (context, constraints) {
+            double fontSize = size(constraints.maxWidth * 0.1,
+                min: 10, max: Theme.of(context).textTheme.body1.fontSize);
+
+            return Card(
+                child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network("http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png"),
-                Text("Renault Megane RS Trophy")
+                Image.network(
+                    "http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png"),
+                Text(
+                  "$fontSize - Renault Megane RS Trophy",
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: fontSize),
+                )
               ],
-            )
-          );
+            ));
+          });
         });
   }
 }
