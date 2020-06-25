@@ -2,17 +2,31 @@
 import 'package:carros_flutter_web/pages/default_page.dart';
 import 'package:flutter/material.dart';
 
+
+class PageInfo{
+  String title;
+  Widget page;
+
+  PageInfo(this.title, this.page);
+
+  @override
+  String toString() {
+    return title;
+  }
+}
+
+
 class AppModel extends ChangeNotifier{
 
-  List<Widget> pages = [];
+  List<PageInfo> pages = [];
 
-  Widget defaultPage = DefaultPage();
+  PageInfo defaultPage = PageInfo("Home", DefaultPage());
 
   AppModel(){
     pages.add(defaultPage);
   }
 
-  push(Widget page, {bool replace = false}){
+  push(PageInfo page, {bool replace = false}){
 
     if(replace){
       this.pages.clear();
@@ -20,7 +34,7 @@ class AppModel extends ChangeNotifier{
       this.pages.add(defaultPage);
     }
 
-    if(page.runtimeType.toString() != defaultPage.runtimeType.toString()){
+    if(page.title != "Home"){
       this.pages.add(page);
     }
 
